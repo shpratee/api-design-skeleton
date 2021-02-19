@@ -1,0 +1,38 @@
+openapi: 3.0.1
+info:
+  description: "Common Headers. More details: https://escmconfluence.1dc.com/pages/viewpage.action?pageId=449317925"
+  version: "1.0"
+  title: Common Headers
+paths: {}
+components:
+  #########################
+  # Common headers
+  # (except request headers - they are defined as parameters)
+  #########################
+  headers:
+    Correlation-Id:
+      format: uuid
+      schema:
+        minLength: 36
+        maxLength: 36  
+        type: string
+        example: '9591e6d8-0d70-11ea-8d71-362b9e155667'
+      description: "An RFC4122 UUID used as to trace requests."
+      required: true
+    Content-Type:
+      schema:
+        enum: ["application/json", "application/json;charset=UTF-8"]
+        type: string
+      description: "Standard HTTP Header; Represents the format of the payload being provided in the request. This must be set to application/json and applicable for POST/PATCH."
+      required: true
+    TimeStamp:
+      name: timeStamp
+      in: header
+      description: "To store datestamp with Datetime format together with a timezone. Accepted format: 2019-07-21T17:32:28+02:00."
+      required: true
+      style: simple
+      explode: false
+      format: date-time
+      schema:
+        type: string
+        example: "2019-07-21T17:32:28+02:00"

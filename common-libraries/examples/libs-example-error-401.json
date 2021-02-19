@@ -1,0 +1,9 @@
+{
+  "errors" : [
+    {
+      "id" : "b894cf5c-cab7-4f8e-8ffa-a7f216e6e8f0",
+      "code" : "AUTHENTICATION_ERROR",
+      "title" : "The user could not be authenticated for this request."
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "errors" : [
+    {
+      "id" : "dd4ba13c-4a3c-4078-a31f-35ac9c07a8f7",
+      "code" : "NOT_ACCEPTABLE",
+      "title" : "The media type is not acceptable."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+openapi: 3.0.1
+info:
+  description: "Parameters for filtering. More details: https://escmconfluence.1dc.com/pages/viewpage.action?pageId=449317925"
+  version: "1.0"
+  title: "Parameters for filtering"
+
+components:
+  #########################
+  # Filtering headers
+  #########################
+  parameters:
+    FilterParam:
+      name: filter
+      in: query
+      schema:
+        type: string
+        example: 'color:black;startDate:2019-02-04'
+      description: "Specifies the list of fields that output could be filtered by"

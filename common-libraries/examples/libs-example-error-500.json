@@ -1,0 +1,10 @@
+{
+  "errors" : [
+    {
+      "id" : "8ce64549-f991-4ede-b00f-6802758b4757",
+      "code" : "INTERNAL_SERVER_ERROR",
+      "title" : "The request failed due to an internal error.",
+      "detail" : "SQL Exception found while trying to establish the connection with table TDLCDHB."
+    }
+  ]
+}

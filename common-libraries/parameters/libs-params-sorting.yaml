@@ -1,0 +1,18 @@
+openapi: 3.0.1
+info:
+  description: "Parameters for sorting. More details: https://escmconfluence.1dc.com/display/EGA/Sorting"
+  version: "1.0"
+  title: "Parameters for sorting"
+
+components:
+  #########################
+  # Sorting headers
+  #########################
+  parameters:
+    SortParam:
+      name: sort
+      in: query
+      schema:
+        type: string
+        example: 'email,-startDate'
+      description: "Specifies the field(s) by which the retrieved records should be sorted by. It also gives the direction of sorting using '-' sign for descending and '+' for ascending. If not specified, default ascending is going to be used."

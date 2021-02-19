@@ -1,0 +1,12 @@
+{
+  "errors" : [
+    {
+      "id" : "0b1adfa1-1179-4377-8773-6f18fa593aae",
+      "code" : "SEARCH_CRITERIA_NOT_VALID",
+      "title" : "Invalid query parameters sent for searching items",
+      "source" : {
+        "parameter" : "town"
+      }
+    }
+  ]
+}

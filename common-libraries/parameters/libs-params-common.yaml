@@ -1,0 +1,39 @@
+openapi: 3.0.1
+info:
+  description: "Common parameters to be used in request. More details: https://escmconfluence.1dc.com/pages/viewpage.action?pageId=449317925"
+  version: "1.0"
+  title: "Common parameters to be used in request"
+
+components:
+  #########################
+  # Common Parameters
+  #########################
+  parameters:
+    Authorization:
+      name: Authorization
+      in: header
+      description: "Standards HTTP header, using which user can authenticate themselves to the system."
+      schema:
+        type: string
+        example: "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg0Njk4NTIsImlhdCI6MTU3ODQ2NDQ1MiwiQXBwbGljYXRpb25OYW1lIjoiQ2hhcmdlQmFjayBPbW5pUGF5IEFwcGxpY2F0aW9uIiwiQXBwbGljYXRpb25JZCI6IkNIQVJHRUJBQ0tfT01OSVBBWV9BUEkifQ.eGC3x1zF249FR0cp35_PlhiawZJUU34oaeVbIMS2msY"
+      required: true
+    Correlation-Id:
+      name: Correlation-Id
+      in: header
+      description: "An RFC4122 UUID used as to trace requests."
+      format: uuid
+      schema: 
+        type: string
+        pattern: ^([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}$
+        minLength: 36
+        maxLength: 36
+        example: '9591e6d8-0d70-11ea-8d71-362b9e155667'
+      required: true
+    Content-Type:
+      name: Content-Type
+      in: header
+      description: "Standard HTTP Header; Represents the format of the payload being provided in the request. This must be set to application/json and applicable for POST/PATCH."
+      schema:
+        type: string
+        enum: ["application/json", "application/json;charset=UTF-8"]
+      required: true

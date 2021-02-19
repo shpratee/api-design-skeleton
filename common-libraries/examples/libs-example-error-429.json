@@ -1,0 +1,9 @@
+{
+  "errors" : [
+    {
+      "id" : "46498627-5e23-49e7-8c33-546dc7592559",
+      "code" : "TOO_MANY_REQUESTS",
+      "title" : "Too Many Requests - client has sent too many requests in a space of time (rate limiting)."
+    }
+  ]
+}

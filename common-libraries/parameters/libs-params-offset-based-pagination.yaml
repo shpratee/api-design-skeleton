@@ -1,0 +1,29 @@
+openapi: 3.0.1
+info:
+  description: "Parameters for offset based pagination. More details: https://escmconfluence.1dc.com/display/EGA/Pagination"
+  version: "1.0"
+  title: "Parameters for offset based pagination"
+
+components:
+  #########################
+  # Offset based pagination headers
+  #########################
+  parameters:
+    OffsetParam:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+      description: "The number of items to skip before returning the results"
+    LimitParam:
+      in: query
+      name: limit
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 100
+        default: 20
+      description: "The number of items to return"

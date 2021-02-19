@@ -1,0 +1,16 @@
+openapi: 3.0.1
+info:
+  description: "Gives the information of current sorting criteria being used in the request."
+  version: "1.0"
+  title: "Sorting Meta type"
+
+components:
+  schemas:
+    SortingMetaType:
+      description: "Map containing sorting related information about data."
+      type: object
+      properties:
+        sort:
+          description: "Indicates the elements the current data is sorted with and the direction of sorting."
+          example: "name,-startDate"
+          type: string

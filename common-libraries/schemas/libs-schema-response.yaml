@@ -1,0 +1,37 @@
+openapi: 3.0.1
+info:
+  description: "Common response structure. More details: https://escmconfluence.1dc.com/display/EGA/Response+Structure"
+  version: "1.0"
+  title: "Response structure"
+
+components:
+  schemas:
+    ResponseType:
+      description: |
+        "An API response.
+        The API response will be either a SUCCESS or an ERROR. A partial success or warning scenario will be treated as a Success with embedded messages in the meta data. A full success may not have messages.
+        The API response will contain at least one of the following top level members."
+      type: object
+      properties:
+        meta:
+          $ref: 'libs-schema-meta.yaml#/components/schemas/MetaType'
+        data:
+          description: |
+            "Contains the primary data to be returned as the API response.
+
+            It can be:
+            * single object if response is being sent for a single item like /customers/{customerId}.
+            * collection (array) of objects if the response is being sent for a collection like /customers
+
+            It will not be returned in case of error."
+          type: object
+        errors:
+          description: |
+            "Contains one or more error messages and is mutually exclusive with the data item.
+
+            This will not be returned in success scenarios."
+          type: array
+          items:
+            $ref: 'libs-schema-error.yaml#/components/schemas/ErrorType'
+        links:
+          $ref: 'libs-schema-links.yaml#/components/schemas/LinksType'

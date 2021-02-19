@@ -1,0 +1,263 @@
+openapi: 3.0.1
+info:
+  title: Friends-Management-API
+  description: Friends API to manage Friends
+  version: '1.0'
+servers:
+  - url: "https://{hostname}:{port}/{basePath}/{version}"
+    description: "Generic construct of API's base path"
+    variables:
+      hostname:
+        description: "This is where the API can be accessed and will be provided by API provider. Below hostname is from Development server. For different test/production environments the hostname may vary"
+        enum:
+          - "l5dvap1014"
+        default: "l5dvap1014"
+      port:
+        description: "Port number where API has been exposed and will be provided by API provider and is only going to be needed if specified. The below number is for production environment, for different test environments the number may vary"
+        enum: 
+          - "8701"
+        default: "8701"
+      basePath:
+        description: "Basepath of the API"
+        default: "friends-management"
+      version:
+        description: "First version of the API based on project FT-4273"
+        default: "v1"
+paths:
+  /friends:
+    post:
+      tags:
+      - friends
+      summary: "Creates a new friend"
+      description: "Created a new friend with details provided"
+      operationId: "createFriend"
+      parameters:
+      - $ref: './common-libraries/parameters/libs-params-common.yaml#/components/parameters/Authorization'
+      - $ref: './common-libraries/parameters/libs-params-common.yaml#/components/parameters/Correlation-Id'
+      requestBody:
+        required: true
+        description: "Friend details to be created"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Friend"
+      responses:
+        200:
+          description: "Success"
+          headers:
+            Correlation-Id:
+              $ref: './common-libraries/headers/libs-headers-common.yaml#/components/headers/Correlation-Id'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FriendResponse'
+        "400":
+          description: "Bad Request - the request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modifications."
+          content:
+            "application/json":
+              schema:
+                $ref: './common-libraries/schemas/libs-schema-response.yaml#/components/schemas/ResponseType'
+              example:
+                $ref: './common-libraries/examples/libs-example-error-400.json'
+        "404":
+          description: "Not Found - server has not found a resource with that URI. This may be temporary and permanent condition. This status code is commonly used when the server does not wish to reveal exactly why the request has been refused, or when no other response is applicable."
+          content:
+            "application/json":
+              schema:
+                $ref: './common-libraries/schemas/libs-schema-response.yaml#/components/schemas/ResponseType'
+              example:
+                $ref: './common-libraries/examples/libs-example-error-404.json'
+        "500":
+          description: "Internal Server Error - server encountered an error processing request. This should not happen normally, but it is a generic error message, given when no more specific message is suitable."
+          content:
+            "application/json":
+              schema:
+                $ref: './common-libraries/schemas/libs-schema-response.yaml#/components/schemas/ResponseType'
+              example:
+                $ref: './common-libraries/examples/libs-example-error-500.json'
+      deprecated: false
+    get:
+      tags:
+      - friends
+      summary: "Get all friends"
+      description: "Retrieves all friends"
+      operationId: "getFriends"
+      parameters:
+      - $ref: './common-libraries/parameters/libs-params-common.yaml#/components/parameters/Authorization'
+      - $ref: './common-libraries/parameters/libs-params-common.yaml#/components/parameters/Correlation-Id'
+      responses:
+        200:
+          description: "Success"
+          headers:
+            Correlation-Id:
+              $ref: './common-libraries/headers/libs-headers-common.yaml#/components/headers/Correlation-Id'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FriendListResponse'
+        "400":
+          description: "Bad Request - the request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modifications."
+          content:
+            "application/json":
+              schema:
+                $ref: './common-libraries/schemas/libs-schema-response.yaml#/components/schemas/ResponseType'
+              example:
+                $ref: './common-libraries/examples/libs-example-error-400.json'
+        "404":
+          description: "Not Found - server has not found a resource with that URI. This may be temporary and permanent condition. This status code is commonly used when the server does not wish to reveal exactly why the request has been refused, or when no other response is applicable."
+          content:
+            "application/json":
+              schema:
+                $ref: './common-libraries/schemas/libs-schema-response.yaml#/components/schemas/ResponseType'
+              example:
+                $ref: './common-libraries/examples/libs-example-error-404.json'
+        "500":
+          description: "Internal Server Error - server encountered an error processing request. This should not happen normally, but it is a generic error message, given when no more specific message is suitable."
+          content:
+            "application/json":
+              schema:
+                $ref: './common-libraries/schemas/libs-schema-response.yaml#/components/schemas/ResponseType'
+              example:
+                $ref: './common-libraries/examples/libs-example-error-500.json'
+  /friends/{friendId}:
+    get:
+      tags:
+      - friends
+      summary: "Get a friend's details"
+      description: "Retrieves one friend's details"
+      operationId: "getFriend"
+      parameters:
+      - $ref: './common-libraries/parameters/libs-params-common.yaml#/components/parameters/Authorization'
+      - $ref: './common-libraries/parameters/libs-params-common.yaml#/components/parameters/Correlation-Id'
+      - name: friendId
+        in: path
+        description: "Friend Id"
+        required: true
+        schema:
+          type: integer
+          format: int32
+          minimum: 19000101000000
+          maximum: 99991231999999
+          example: 20190101921021
+          pattern: '^\d{1,10}$'
+      responses:
+        200:
+          description: "Success"
+          headers:
+            Correlation-Id:
+              $ref: './common-libraries/headers/libs-headers-common.yaml#/components/headers/Correlation-Id'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FriendResponse'
+        "400":
+          description: "Bad Request - the request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modifications."
+          content:
+            "application/json":
+              schema:
+                $ref: './common-libraries/schemas/libs-schema-response.yaml#/components/schemas/ResponseType'
+              example:
+                $ref: './common-libraries/examples/libs-example-error-400.json'
+        "404":
+          description: "Not Found - server has not found a resource with that URI. This may be temporary and permanent condition. This status code is commonly used when the server does not wish to reveal exactly why the request has been refused, or when no other response is applicable."
+          content:
+            "application/json":
+              schema:
+                $ref: './common-libraries/schemas/libs-schema-response.yaml#/components/schemas/ResponseType'
+              example:
+                $ref: './common-libraries/examples/libs-example-error-404.json'
+        "500":
+          description: "Internal Server Error - server encountered an error processing request. This should not happen normally, but it is a generic error message, given when no more specific message is suitable."
+          content:
+            "application/json":
+              schema:
+                $ref: './common-libraries/schemas/libs-schema-response.yaml#/components/schemas/ResponseType'
+              example:
+                $ref: './common-libraries/examples/libs-example-error-500.json'
+      
+      
+  
+components:
+  schemas:
+    Friend:
+      title: "Friend"
+      required:
+      - firstName
+      - secondName
+      - age
+      - timestamp
+      - sex
+      - dateOfBirth
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: "First Name"
+          minLength: 8
+          maxLength: 8
+          example: 'Foo'
+          pattern: '^\w{8}$'
+        secondName:
+          type: string
+          description: "Second Name"
+          minLength: 8
+          maxLength: 8
+          example: "Bar"
+          pattern: '^\w{8}$'
+        age:
+          type: integer
+          format: int32
+          description: "Age"
+          minimum: 16
+          maximum: 99
+          example: 26
+          pattern: '^\d{16,99}$'
+        timestamp:
+          description: "Date of birth in ISO 8601 format"
+          $ref: './schemas/schemas-common.yaml#/components/schemas/Datetime'
+        sex:
+          type: string
+          enum: ['MALE', 'FEMALE']
+          description: "Sex"
+          example: "MALE"
+        dateOfBirth:
+          description: "Date of Birth in YYYY-MM-DD format"
+          $ref: './schemas/schemas-common.yaml#/components/schemas/Date'
+        
+    FriendResponse:
+      title: "Friend Response"
+      description: "Friend response"
+      allOf:
+        - $ref: './common-libraries/schemas/libs-schema-response.yaml#/components/schemas/ResponseType'
+        - properties:
+            data:
+              $ref: "#/components/schemas/Friend"
+          required:
+            - data
+          type: object
+    FriendCollection:
+      title: "Friend Collection"
+      description: "Friend collection"
+      required:
+      - disputes
+      type: object
+      properties:
+        disputes:
+          type: array
+          description: Friends collection
+          items:
+            $ref: '#/components/schemas/Friend'
+    FriendListResponse:
+      title: "Friend List Response"
+      description: "Friend list response"
+      allOf:
+        - $ref: './common-libraries/schemas/libs-schema-response.yaml#/components/schemas/ResponseType'
+        - properties:
+            data:
+              $ref: "#/components/schemas/FriendCollection"
+          required:
+            - data
+          type: object
+tags:
+- name: Friends
+  description: Contains the endpoints to manage friends

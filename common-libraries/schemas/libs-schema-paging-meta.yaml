@@ -1,0 +1,40 @@
+openapi: 3.0.1
+info:
+  description: "Gives the information of current pagination criteria being used in the request and more information around data that can be used by clients."
+  version: "1.0"
+  title: "Paging Meta type"
+
+components:
+  schemas:
+    PagingMetaType:
+      description: "Map containing pagination related information about data."
+      type: object
+      properties:
+        count:
+          description: "Total number of records present in system which can be retrieved."
+          example: 100
+          type: integer
+        totalPages:
+          description: "Total number of pages with maximum limit taken into account."
+          example: 10
+          type: integer
+        currentOffset:
+          description: "Current offset used in request."
+          example: 1
+          type: integer
+        currentNumberOfRetrievedRecords:
+          description: "Current number of retrieved records."
+          example: 10
+          type: integer
+        maxLimit:
+          description: "Maximum limit of records that can be retrieved."
+          example: 10
+          type: integer
+        hasMoreRecords:
+          description: "Indicates if there are more records available."
+          example: true
+          type: boolean
+        pageNumber:
+          description: "Current page number."
+          example: 1
+          type: integer

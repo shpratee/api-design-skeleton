@@ -1,0 +1,18 @@
+openapi: 3.0.1
+info:
+  description: "Parameters for Sparse Fieldsets. More details: https://escmconfluence.1dc.com/display/EGA/Sparse+Fieldsets"
+  version: "1.0"
+  title: "Parameters for retrieving selective fields"
+
+components:
+  #########################
+  # Sparse fieldsets headers
+  #########################
+  parameters:
+    FieldsParam:
+      name: fields
+      in: query
+      schema:
+        type: string
+        example: 'name,age,dateOfBirth'
+      description: "Specifies the list of fields that are being queried in response"

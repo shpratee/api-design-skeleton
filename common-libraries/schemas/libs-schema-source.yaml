@@ -1,0 +1,25 @@
+openapi: 3.0.1
+info:
+  description: "Contains the details of source of an error."
+  version: "1.0"
+  title: "Source type"
+
+components:
+  schemas:
+    SourceType:
+      description: "Object containing references to the source of the message."
+      type: object
+      properties:
+        pointer:
+          description: "Indicates the element in the request document which caused
+            the error."
+          example: "/dogs/name"
+          type: string
+        parameter:
+          description: "Indicates which query parameter caused the error."
+          example: "type"
+          type: string
+        header:
+          description: "Indicates which header caused the error."
+          example: "type"
+          type: string

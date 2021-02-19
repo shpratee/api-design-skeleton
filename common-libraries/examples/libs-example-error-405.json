@@ -1,0 +1,9 @@
+{
+  "errors" : [
+    {
+      "id" : "46498627-5e23-49e7-8c33-546dc7592559",
+      "code" : "METHOD_NOT_ALLOWED",
+      "title" : "The requested operation is not supported."
+    }
+  ]
+}

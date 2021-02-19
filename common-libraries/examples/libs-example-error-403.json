@@ -1,0 +1,9 @@
+{
+  "errors" : [
+    {
+      "id" : "b72da3ba-39cf-4fd9-9e5b-2718f270a024",
+      "code" : "FORBIDDEN_ERROR",
+      "title" : "The user is not permitted to access the requested operation and it cannot be completed."
+    }
+  ]
+}

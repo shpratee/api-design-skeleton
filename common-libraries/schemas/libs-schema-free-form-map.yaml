@@ -1,0 +1,12 @@
+openapi: 3.0.1
+info:
+  description: Contains the definition of a free-form map type.
+  version: 1.0
+  title: Free-form map type
+
+components:
+  schemas:
+    FreeFormMapType:
+      type: object
+      additionalProperties: {}
+      description: A map of free-form objects keyed by a string

@@ -1,0 +1,36 @@
+openapi: 3.0.1
+info:
+  description: "Contains the details of links to be sent in response."
+  version: "1.0"
+  title: "Links type"
+
+components:
+  schemas:
+    LinksType:
+      description: "Contains the links to retrieve the resources exposed as part of this API."
+      type: object
+      properties:
+        self:
+          description: "The link to the primary resource being retrieved in the request."
+          example: "https://api.firstdata.com/ipp/accounts-management/v1/accounts?offset=3&limit=10"
+          type: string
+        first:
+          description: "This is to provide the link to retrieve the first record/page.
+            This SHOULD be used in case server provides pagination of the resource."
+          example: "https://api.firstdata.com/ipp/accounts-management/v1/accounts?offset=1&limit=10"
+          type: string
+        last:
+          description: "This is to provide the link to retrieve the last record/page. This
+            SHOULD be used in case server provides pagination of the resource."
+          example: "https://api.firstdata.com/ipp/accounts-management/v1/accounts?offset=10&limit=10"
+          type: string
+        prev:
+          description: "This is to provide the link to retrieve the previous record/page.
+            This SHOULD be used in case server provides pagination of the resource."
+          example: "https://api.firstdata.com/ipp/accounts-management/v1/accounts?offset=2&limit=10"
+          type: string
+        next:
+          description: "This is to provide the link to retrieve the last record. This SHOULD
+            be used in case server provides pagination of the resource"
+          example: "https://api.firstdata.com/ipp/accounts-management/v1/accounts?offset=4&limit=10"
+          type: string

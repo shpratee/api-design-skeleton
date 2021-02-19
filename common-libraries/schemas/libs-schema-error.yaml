@@ -1,0 +1,38 @@
+openapi: 3.0.1
+info:
+  description: "Contains the details to be returned part of an error."
+  version: 1.0
+  title: "Error structure"
+
+components:
+  schemas:
+    ErrorType:
+      description: "Message details - additional operation execution information."
+      type: object
+      properties:
+        id:
+          description: "Generated message identifier for particular request, helping to
+            locate server logs."
+          example: "dd4ba13c-4a3c-4078-a31f-35ac9c07a8f7"
+          type: string
+        code:
+          description: "Machine readable, unique code of the message related to particular
+            case within operation execution. For complete list of codes please refer to
+            API portal, messages page."
+          example: "ACCOUNT_NUMBER_NOT_FOUND"
+          type: string
+        title:
+          description: "Short description of the error. Not for displaying purposes."
+          example: "The authorization credentials required for this request are invalid."
+          type: string
+        detail:
+          description: "Provides additional low-level details about the error to assist
+            with troubleshooting. Not for displaying purposes."
+          example: "SQLException found while trying to establish the connection with table
+            TUKCDHN."
+          type: string
+        source:
+          $ref: "libs-schema-source.yaml#/components/schemas/SourceType"
+      required:
+        - code
+        - title

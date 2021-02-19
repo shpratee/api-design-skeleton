@@ -1,0 +1,22 @@
+openapi: 3.0.1
+info:
+  description: "Contains the meta information about the response."
+  version: "1.0"
+  title: "Meta type"
+
+components:
+  schemas:
+    MetaType:
+      description: "Supplementary information about the data."
+      type: object
+      properties:
+        paging:
+          $ref: "libs-schema-paging-meta.yaml#/components/schemas/PagingMetaType"
+        sorting:
+          $ref: "libs-schema-sorting-meta.yaml#/components/schemas/SortingMetaType"
+        messages:
+          description: "Messages related to request processing or response data - any additional
+            information or warnings to be returned in the case of a successful API call."
+          type: array
+          items:
+            $ref: 'libs-schema-error.yaml#/components/schemas/ErrorType'
